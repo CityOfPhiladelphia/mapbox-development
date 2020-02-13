@@ -38,6 +38,10 @@
       :center="mapCenter"
       :zoom="mapZoom"
     >
+      <mb-raster-layer
+        :url="'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityImagery_Labels/MapServer'"
+      >
+    </mb-raster-layer>
     </mb-map>
   </div>
 </template>
@@ -46,11 +50,13 @@
 
 import Map_ from '@phila/vue-mapping/src/leaflet/Map.vue';
 import MbMap from '@phila/vue-mapping/src/mapbox/MbMap.vue';
+import MbRasterLayer from '@phila/vue-mapping/src/mapbox/MbRasterLayer.vue';
 
 export default {
   name: 'app',
   components: {
     MbMap,
+    MbRasterLayer,
     // Map_,
     // EsriTiledMapLayer: () => import(/* webpackChunkName: "mbmp_pvm_EsriTiledMapLayer" */'@phila/vue-mapping/src/esri-leaflet/TiledMapLayer.vue'),
   },
@@ -86,29 +92,6 @@ export default {
         ]
       };
     },
-    // mapboxStyle() {
-    //   return {
-    //     version: 8,
-    //     sources: {
-    //       worldImagery: {
-    //         type: "raster",
-    //         tiles: [
-    //           'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityBasemap/MapServer/tile/{z}/{y}/{x}'
-    //         ],
-    //         tileSize: 256
-    //       }
-    //     },
-    //     layers: [
-    //       {
-    //         id: "worldImagery",
-    //         type: "raster",
-    //         source: "worldImagery",
-    //         minzoom: 0,
-    //         maxzoom: 22
-    //       }
-    //     ]
-    //   };
-    // },
     mapCenter() {
       return [-75.163471, 39.953338];
     },
@@ -138,7 +121,7 @@ export default {
 
 <style>
 #app {
-  height: 400px;
+  height: 600px;
   /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
