@@ -1,29 +1,5 @@
-# mapboxtest
+# mapbox-development
 
-## Project setup
-```
-yarn install
-```
+This is a vue [app](http://mapbox-development.s3-website-us-west-1.amazonaws.com/) that is used for testing development of phila-vue-mapping components that use the Mapbox GL JS api.
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](https://mapboard-images.s3.amazonaws.com/phila-vue-mapping/MapboxDevelopment/mapbox-development-site.JPG)
