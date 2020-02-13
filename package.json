@@ -1,5 +1,5 @@
 {
-  "name": "mapboxtest",
+  "name": "mapbox-development",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,8 +7,10 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@phila/vue-mapping": "https://github.com/CityOfPhiladelphia/phila-vue-mapping#4fef5ce56719c91bef61b0c73ad024bd3b42e9bd",
     "core-js": "^3.4.4",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
