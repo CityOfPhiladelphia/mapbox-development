@@ -38,11 +38,13 @@
       :center="mapCenter"
       :zoom="mapZoom"
     >
-      <mb-raster-layer
+      <!-- <mb-raster-layer
         :url="'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityImagery_Labels/MapServer'"
       >
-      </mb-raster-layer>
+      </mb-raster-layer> -->
       <mb-icon
+        :url="'https://mapboard-images.s3.amazonaws.com/camera.png'"
+        :name="'camera'"
       >
       </mb-icon>
     </mb-map>
@@ -70,32 +72,61 @@ export default {
       url: 'CityImagery_2019_3in'
     };
   },
+  created() {
+    this.$store.commit('setBasemap', 'pwd');
+  },
   mounted() {
     console.log('App.vue mounted, this.$config:', this.$config);
   },
+  watch: {
+    activeBasemap() {
+      console.log('watch activeBasemap is firing');
+      let map = this.$store.state.map.map;
+      map.setStyle(this.mapboxStyle);
+    }
+  },
   computed: {
     mapboxStyle() {
-      return {
+      console.log('App.vue mapboxStyle computed, this.activeBasemap:', this.activeBasemap, 'this.$config:', this.$config);
+      let value;
+      value = {
         version: 8,
         sources: {
-          worldImagery: {
+          basemap: {
             type: "raster",
             tiles: [
-              'http://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/' + this.$data.url + '/MapServer/tile/{z}/{y}/{x}'
+              this.$config.map.basemaps[this.activeBasemap].url + '/tile/{z}/{y}/{x}'
             ],
             tileSize: 256
-          }
+          },
+          basemapLabels: {
+            type: "raster",
+            tiles: [
+              this.$config.map.tiledLayers[this.$config.map.basemaps[this.activeBasemap].tiledLayers[0]].url + '/tile/{z}/{y}/{x}'
+            ],
+            tileSize: 256
+          },
+
         },
         layers: [
           {
-            id: "worldImagery",
+            id: "basemap",
             type: "raster",
-            source: "worldImagery",
+            source: "basemap",
             minzoom: 0,
             maxzoom: 22
-          }
+          },
+          {
+            id: "basemapLabels",
+            type: "raster",
+            source: "basemapLabels",
+            minzoom: 0,
+            maxzoom: 22
+          },
+
         ]
       };
+      return value;
     },
     mapCenter() {
       return [-75.163471, 39.953338];
@@ -104,7 +135,7 @@ export default {
       return 18;
     },
     activeBasemap() {
-      return 'pwd';
+      return this.$store.state.map.basemap;
     },
     tiledLayers() {
       const activeBasemap = this.activeBasemap;
@@ -114,7 +145,12 @@ export default {
   },
   methods: {
     toggleBasemap() {
-      this.$data.url = 'CityBasemap';
+      if (this.activeBasemap === 'pwd') {
+        this.$store.commit('setBasemap', 'imagery2019');
+      } else {
+        this.$store.commit('setBasemap', 'pwd');
+      }
+      // this.$data.url = 'CityBasemap';
       // map.setStyle
     },
     configForBasemap(basemap) {

@@ -19,13 +19,33 @@ let config = {
         type: 'featuremap',
         attribution: 'Parcels: Philadelphia Water'
       },
+      imagery2019: {
+        url: 'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityImagery_2019_3in/MapServer',
+        label: '2019',
+        tiledLayers: [
+          'imageryBasemapLabels',
+          'parcels'
+        ],
+        type: 'imagery',
+        year: 2019,
+        attribution: 'Imagery 2019'
+      },
     },
     tiledLayers: {
       cityBasemapLabels: {
         url: 'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityBasemap_Labels/MapServer',
         zIndex: '3',
       },
-    },
+      dorBasemapLabels: {
+        url: 'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/DORBasemap_Labels/MapServer',
+        zIndex: '3',
+      },
+      imageryBasemapLabels: {
+        url: 'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityImagery_Labels/MapServer',
+        zIndex: '3',
+        attribution: 'overwrite',
+      },
+    }
   }
 };
 Vue.use(configMixin, config);
