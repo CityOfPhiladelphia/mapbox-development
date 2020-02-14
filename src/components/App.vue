@@ -47,6 +47,8 @@
         :name="'camera'"
       >
       </mb-icon>
+      <mb-measure-tool>
+      </mb-measure-tool>
     </mb-map>
   </div>
 </template>
@@ -57,6 +59,7 @@ import Map_ from '@phila/vue-mapping/src/leaflet/Map.vue';
 import MbMap from '@phila/vue-mapping/src/mapbox/MbMap.vue';
 import MbRasterLayer from '@phila/vue-mapping/src/mapbox/MbRasterLayer.vue';
 import MbIcon from '@phila/vue-mapping/src/mapbox/MbIcon.vue';
+import MbMeasureTool from '@phila/vue-mapping/src/mapbox/MbMeasureTool.vue';
 
 export default {
   name: 'app',
@@ -64,6 +67,7 @@ export default {
     MbMap,
     MbRasterLayer,
     MbIcon,
+    MbMeasureTool,
     // Map_,
     // EsriTiledMapLayer: () => import(/* webpackChunkName: "mbmp_pvm_EsriTiledMapLayer" */'@phila/vue-mapping/src/esri-leaflet/TiledMapLayer.vue'),
   },
