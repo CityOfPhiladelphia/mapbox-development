@@ -41,7 +41,10 @@
       <mb-raster-layer
         :url="'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityImagery_Labels/MapServer'"
       >
-    </mb-raster-layer>
+      </mb-raster-layer>
+      <mb-icon
+      >
+      </mb-icon>
     </mb-map>
   </div>
 </template>
@@ -51,12 +54,14 @@
 import Map_ from '@phila/vue-mapping/src/leaflet/Map.vue';
 import MbMap from '@phila/vue-mapping/src/mapbox/MbMap.vue';
 import MbRasterLayer from '@phila/vue-mapping/src/mapbox/MbRasterLayer.vue';
+import MbIcon from '@phila/vue-mapping/src/mapbox/MbIcon.vue';
 
 export default {
   name: 'app',
   components: {
     MbMap,
     MbRasterLayer,
+    MbIcon,
     // Map_,
     // EsriTiledMapLayer: () => import(/* webpackChunkName: "mbmp_pvm_EsriTiledMapLayer" */'@phila/vue-mapping/src/esri-leaflet/TiledMapLayer.vue'),
   },
