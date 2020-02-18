@@ -42,13 +42,15 @@
         :url="'https://tiles.arcgis.com/tiles/fLeGjb7u4uXqeF9q/arcgis/rest/services/CityImagery_Labels/MapServer'"
       >
       </mb-raster-layer> -->
+
       <mb-icon
         :url="'https://mapboard-images.s3.amazonaws.com/camera.png'"
         :name="'camera'"
       >
       </mb-icon>
-      <mb-measure-tool>
-      </mb-measure-tool>
+
+      <mb-measure-tool />
+
     </mb-map>
   </div>
 </template>
